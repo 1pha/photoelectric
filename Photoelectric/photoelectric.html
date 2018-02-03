@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<title>Photoelectric Effect</title> <!-- 모듈 제목 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, chrome=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {
+  position : relative;
+  font-family: "apple sd gothic neo" , sans-serif;
+}
+header, footer{
+    font-family: "apple sd gothic neo" , sans-serif;
+    position : relative;
+    padding: 5em;
+    color: white;
+    background-color: #00004d;
+    text-align: left;
+}
+.centered {
+  position: relative;
+  text-align:center;
+  margin: 20px auto;
+  width: 70%;
+  padding: 1em;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "apple sd gothic neo", sans-serif;
+    letter-spacing: 5px;
+}
+#gui_container{
+              position: relative;
+              top: 100%;
+              left: 50%;
+            }
+#gui{
+  transform:translate(-50%, -0px);
+}
+
+</style>
+<body>
+  <!-- javascript 라이브러리 넣는 부분
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js'></script>
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/OrbitControls.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
+  <script src='js/three.min.js'></script>
+  <script src='js/threex.atmospherematerial.js'></script>
+  <script src='js/dat.gui.min.js'></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src='js/threex.laserbeam.js'></script>
+-->
+
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+      <a href="#home" class="w3-bar-item w3-button w3-black w3-round" style="height:100%;width:50%"><b>Photoelectric Effect</b></a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#about" class="w3-bar-item w3-button">Introduction</a>
+        <a href="#bgtheory" class="w3-bar-item w3-button">Theory</a>
+        <a href="#how" class="w3-bar-item w3-button">How</a>
+        <a href="#module" class="w3-bar-item w3-button">Module</a>
+      </div>
+    </div>
+  </div>
+
+<div class="w3-content" style="max-width:100%">
+
+  <!-- Introduction Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+      <br><br>
+     <img src="img/appleton.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="540" height="400">
+    </div>
+
+    <div class="w3-col m6 w3-padding-small">
+      <br>
+      <h1 class="w3-center w3-red">Introduction</h1>
+      <p></p>
+      <p></p>
+      <hr>
+      <p class="w3-large"> Paragraph</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">The radio wave is reflected back to the Earth's surface when the wavelength is long,
+      penetrating the middle of the Appleton layer with the greatest degree of ionization,
+      and propagating out of space through the heavy side layer if the radio wave energy is sufficient.</p>
+    </div>
+  </div>
+
+  <!-- Background Theory Section -->
+  <div class="w3-container w3-padding-small" id="bgtheory">
+    <div class="centered">
+      <br>
+      <h1 class="w3-center w3-orange w3-text-white">Background Theory</h1>
+      <hr>
+      <h4>● The Photoionization</h4>
+      <p class="w3-center w3-text-black">Interference means that two or more wavelengths are physically added to represent a new wave form. The most widely used view of interference is about the interactions of mutually extinguished or mutually reinforcing wavelengths because their wavelengths come from the same light source,</p><br>
+
+      <h4>● The wireless communication</h4>
+      <p class="w3-center w3-text-black">are near perfect, or have the same frequency. If the two wavelengths have wavelength regions that are not exactly the same, and there are the same number of phase differences at each wavelength produced, then the two non-single wavelengths are also perfectly complementary to each other.</p><br>
+
+      <h4>● The Ionosphere</h4>
+      <p class="w3-text-black">If the waves originate from two or more different sources, the difference in total phase is caused by the difference between the two waveforms and the sum of the initial phase differences. This conclusion can be seen in terms of whether the wavelength is in phase or out phase exactly at the starting point of the wavelength.</p><br>
+    </div>
+  </div>
+
+ <!-- How to Section -->
+  <div class="w3-row w3-padding-small" id="how">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+      <br>
+     <img src="img/sample3.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="540" height="400">
+    </div>
+
+    <br>
+    <div class="w3-col m6 w3-padding-small">
+      <br><br>
+      <h1 class="w3-center w3-blue">How to use</h1>
+      <h5 class="w3-center">Discovery of the appleton layer</h5>
+      <p></p>
+      <p></p>
+      <hr>
+      <p class="w3-large">Frequency : none / LF(Low) / HF(High Frequency) / VHF(Very High Frequency)
+Choose the one, You can shoot the electromagnetic waves.</p>
+      <p class="w3-large">(1)Click the Frequency and choose the one of frequency.(I made they for you) </p>
+      <p class="w3-large">(2)Satellite : It's the satellite communication. </p>
+      <p class="w3-large">(3)Check to this box, You can see where is the Appleton layer.</p>
+      <p class="w3-large">(4)Guess where is the appleton layer. You can do it. </p>
+    </div>
+  </div>
+
+  <!-- module 코드가 들어가는 부분 -->
+  <div class="w3-container w3-padding-small" id="module">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <div class="centered"><br><br>
+      <h1 class="w3-center w3-green">Module</h1>
+    </div>
+    <div id="menu" style="width:300px; height:800px; background-color:#EEEEEE; position:absolute; border : 1px solid #000000; left:1010px;">
+      <p align = "center">
+        Type of Metal(work function in eV)<br>
+        <select id="phi" >
+          <option value="1.9">Cs 1.9eV</option>
+          <option value="2.2">K  2.2eV</option>
+          <option value="2.3">Na 2.3eV</option>
+          <option value="2.5">Li 2.5eV</option>
+          <option value="3.2">Ca 3.2eV</option>
+          <option value="4.7">Cu,Ag 4.7eV</option>
+          <option value="6.4">Pt 6.4eV</option>
+        </select>
+        <br><br>
+
+        Frequency<br>
+        <input type="range" name="nature" id="frequency" min="1" max="200" value="10" onchange="frequency_repr(this.value)"> <br>
+        <input type="text" name="nature" id="frequency_repr" value="10" size="2" readonly> (×<img src="http://latex.codecogs.com/gif.latex?10%5E{14}"> Hz)
+        <br><br>
+
+        Retarding Voltage <br>
+        <input type="range" name="nature" id="voltage" min="1" max="100" value="0" onchange="voltage_repr(this.value)"><br>
+        <input type="text" name="nature" id="voltage_repr" value="0" size="2" readonly> (V)
+        <br><br>
+
+        Intensity of Light <br>
+        <input type="range" name="nature" id="intensity" min="1" max="10" value="3" onchange="intensity_repr(this.value)"><br>
+        <input type="text" name="nature" id="intensity_repr" value="3" size="2" readonly> (Relative)
+        <br><br>
+
+      </p>
+      <p align = "center">
+        <button id="apply" onclick="apply();"> APPLY </button>
+        <button id="play"> PLAY </button>
+        <button id="pause"> PAUSE </button>
+        <button id="reset" onclick="reset();"> RESET </button>
+        <br><br><br>
+      </p>
+    </div>
+    <canvas id = "canvas" width="1000" height="800"></canvas>
+    <canvas id = "blank" width="1000" height="800"></canvas>
+    <script type = "text/javascript">
+      const h = 6.63e-34, c = 2.99e+8, m = 9.10e-31;
+
+      function frequency_repr(val){ document.getElementById("frequency_repr").value = val;}
+      function voltage_repr(val)  { document.getElementById("voltage_repr").value = val;}
+      function intensity_repr(val){ document.getElementById("intensity_repr").value = val;}
+
+      var freq = document.getElementById("frequency_repr").value * 1;
+      var volt = document.getElementById("voltage_repr").value * 1;
+      var intense = document.getElementById("intensity_repr").value * 1;
+      var phi = document.getElementById("phi").value * 1;
+      var freq_0 = phi / h;
+
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var requestId;
+
+      //필요한거 아니면 열지마세요
+      var lab = {
+          width : canvas.width,
+          height: canvas.height,
+
+          //실험기기 문자 표현
+          text : [
+              Light = {
+                  text : "Light",
+                  size : "30px Arial",
+                  x : canvas.width * 0.40,
+                  y : canvas.height * 0.13
+              },
+              Electrons = {
+                  text : "Electrons",
+                  size : "20px Arial",
+                  x : canvas.width * 0.5,
+                  y : canvas.height * 0.27
+              },
+              Eqt = {
+                  text : "Evacuated quartz tube",
+                  size : "30px Arial",
+                  x : canvas.width * 0.5,
+                  y : canvas.height * 0.43
+              },
+              plus = {
+                  text : "+",
+                  size : "40px Arial",
+                  x : canvas.width * 0.13,
+                  y : canvas.height * 0.3
+              },
+              minus = {
+                  text : "-",
+                  size : "40px Arial",
+                  x : canvas.width * 0.87,
+                  y : canvas.height * 0.3
+              },
+              V = {
+                  text : "V",
+                  size : "40px Arial",
+                  x : canvas.width * 0.5,
+                  y : canvas.height* 0.52
+              },
+              A = {
+                  text : "A",
+                  size : "40px Arial",
+                  x : canvas.width * .825,
+                  y : canvas.height * .645
+              }
+          ],
+          draw_text : function(input){
+              ctx.font = input.size;
+              ctx.fillStyle = "black";
+              ctx.textAlign = "center";
+              ctx.fillText(input.text, input.x, input.y);
+          },
+
+          //실험기기 그리기 - 안 열어보는 것을 아주 추천
+          draw_experiment : function(){
+
+              // Rect A
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.225, this.height * 0.3125); //A0
+              ctx.lineTo(this.width * 0.10 , this.height * 0.3125); //A1
+              ctx.lineTo(this.width * 0.10 , this.height * 0.50 ); //A2
+              ctx.lineTo(this.width * 0.50 - 30 , this.height * 0.50 ); //A2'
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.50 + 30 , this.height * 0.50 ); //A3'
+              ctx.lineTo(this.width * 0.90 , this.height * 0.50 ); //A3
+              ctx.lineTo(this.width * 0.90 , this.height * 0.3125); //A4
+              ctx.lineTo(this.width * 0.775, this.height * 0.3125); //A5
+              ctx.stroke();
+
+              // Rect B
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.10 , this.height * 0.50 ); //B0
+              ctx.lineTo(this.width * 0.10 , this.height * 0.575); //B1
+              ctx.lineTo(this.width * 0.40 , this.height * 0.575); //B2
+              ctx.lineTo(this.width * 0.40 , this.height * 0.600); //B3
+              ctx.stroke();
+
+              // Arrow
+              ctx.beginPath();
+              ctx.moveTo(this.width * (0.40 - 0.02), this.height * 0.590);
+              ctx.lineTo(this.width * 0.4, this.height * 0.600);
+              ctx.lineTo(this.width * (0.40 + 0.02), this.height * 0.59);
+              ctx.stroke();
+
+              // Rect C
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.30 , this.height * 0.625); //C0
+              ctx.lineTo(this.width * 0.25 , this.height * 0.625); //C1
+              ctx.lineTo(this.width * 0.25 , this.height * 0.75 ); //C2
+              ctx.lineTo(this.width * 0.75 , this.height * 0.75 ); //C3
+              ctx.lineTo(this.width * 0.75 , this.height * 0.625); //C4
+              ctx.stroke();
+
+              // Line D
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.625, this.height * 0.625); //D0
+              ctx.lineTo(this.width * 0.825 - 30, this.height * 0.625); //D0'
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.825 + 30, this.height * 0.625); //D1'
+              ctx.lineTo(this.width * 0.90 , this.height * 0.625); //D1
+              ctx.lineTo(this.width * 0.90 , this.height * 0.50 ); //D2
+              ctx.stroke();
+
+              // Resistance R
+              ctx.beginPath();
+              ctx.lineWidth = 5;
+              ctx.moveTo(this.width * 0.30 , this.height * 0.625); //R0
+              ctx.lineTo(this.width * (0.30 + (0 + 1/3) * 0.0416), this.height * 0.625); //Ru1
+              ctx.lineTo(this.width * (0.30 + (0 + 2/3) * 0.0416), this.height * 0.615); //Ru1
+              ctx.lineTo(this.width * (0.30 + 0.025 * 1 + 1/3 * 0.0416), this.height * 0.65); //Rd1
+              ctx.lineTo(this.width * (0.30 + 0.025 * 1+ 2/3 * 0.0416), this.height * 0.615); //Ru2
+              ctx.lineTo(this.width * (0.30 + 0.025 * 2 + 1/3 * 0.0416), this.height * 0.65); //Rd2
+              ctx.lineTo(this.width * (0.30 + 0.025 * 2 + 2/3 * 0.0416), this.height * 0.615); //Ru3
+              ctx.lineTo(this.width * (0.30 + 0.025 * 3 + 1/3 * 0.0416), this.height * 0.65); //Rd3
+              ctx.lineTo(this.width * (0.30 + 0.025 * 3 + 2/3 * 0.0416), this.height * 0.615); //Ru4
+              ctx.lineTo(this.width * (0.30 + 0.025 * 4 + 1/3 * 0.0416), this.height * 0.65); //Rd4
+              ctx.lineTo(this.width * (0.30 + 0.025 * 4 + 2/3 * 0.0416), this.height * 0.615); //Ru5
+              ctx.lineTo(this.width * (0.30 + 0.025 * 5 + 1/3 * 0.0416), this.height * 0.65); //Rd5
+              ctx.lineTo(this.width * (0.30 + 0.025 * 5 + 2/3 * 0.0416), this.height * 0.615); //Ru6
+              ctx.lineTo(this.width * (0.30 + 0.025 * 6 + 1/3 * 0.0416), this.height * 0.65); //Rd6
+              ctx.lineTo(this.width * (0.30 + 0.025 * 6 + 2/3 * 0.0416), this.height * 0.625); //Rd6
+              ctx.lineTo(this.width * .475, this.height * 0.625); //RF0
+              ctx.lineTo(this.width * .485, this.height * 0.625); //RF1
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.lineWidth = 1;
+              ctx.moveTo(this.width * 0.485 ,this.height * 0.625); //RF1
+              ctx.lineTo(this.width * 0.575 ,this.height * 0.625); //RF2
+              ctx.stroke();
+
+              // Batteries
+              // Battery+1
+              ctx.beginPath();
+              ctx.lineWidth = 1.2;
+              ctx.moveTo(this.width * 0.575, this.height * 0.625 - 25);
+              ctx.lineTo(this.width * 0.575, this.height * 0.625 + 25);
+              ctx.stroke();
+
+              // Battery-1
+              ctx.beginPath();
+              ctx.lineWidth = 3;
+              ctx.moveTo(this.width * (0.575 + 0.0167), this.height * 0.625 - 15);
+              ctx.lineTo(this.width * (0.575 + 0.0167), this.height * 0.625 + 15);
+              ctx.stroke();
+
+              // Battery+2
+              ctx.beginPath();
+              ctx.lineWidth = 1.2;
+              ctx.moveTo(this.width * (0.575 + 0.0167 * 2), this.height * 0.625 - 25);
+              ctx.lineTo(this.width * (0.575 + 0.0167 * 2), this.height * 0.625 + 25);
+              ctx.stroke();
+
+              // Battery-2
+              ctx.beginPath();
+              ctx.lineWidth = 3;
+              ctx.moveTo(this.width * 0.625, this.height * 0.625 - 15);
+              ctx.lineTo(this.width * 0.625, this.height * 0.625 + 15);
+              ctx.stroke();
+
+
+              // Conductor Left
+              ctx.beginPath();
+              ctx.lineWidth = 8;
+              ctx.moveTo(this.width * 0.225, this.height * 0.28125); //C_L0
+              ctx.lineTo(this.width * 0.225, this.height * 0.34375); //C_L1
+              ctx.stroke();
+
+              // Conductor Right
+              ctx.beginPath();
+              ctx.lineWidth = 8;
+              ctx.moveTo(this.width * 0.775, this.height * 0.28125); //C_R0
+              ctx.lineTo(this.width * 0.775, this.height * 0.34375); //C_R1
+              ctx.stroke();
+
+              // Voltmeter
+              ctx.beginPath();
+              ctx.lineWidth = 1;
+              ctx.arc(this.width * 0.5, this.height * 0.5, 30, 0, 2 * Math.PI);
+              ctx.stroke();
+
+              // Ammeter
+              ctx.beginPath();
+              ctx.lineWidth = 1;
+              ctx.strokeStyle = "black";
+              ctx.arc(this.width * 0.825, this.height * 0.625, 30, 0, 2 * Math.PI);
+              ctx.stroke();
+
+              // Vacuum tube upper line
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.225, this.height * 0.3125 - 60); //C_L0
+              ctx.lineTo(this.width * 0.775, this.height * 0.3125 - 60); //C_L1
+              ctx.stroke();
+
+              // Vaccum tube Left circle
+              ctx.beginPath();
+              ctx.arc(this.width * 0.225, this.height * 0.3125, 60, 0.5 * Math.PI, 1.5 * Math.PI);
+              ctx.stroke();
+
+              // Vacuum tube down line
+              ctx.beginPath();
+              ctx.moveTo(this.width * 0.225, this.height * 0.3125 + 60); //C_L0
+              ctx.lineTo(this.width * 0.775, this.height * 0.3125 + 60); //C_L1
+              ctx.stroke();
+
+              // Vacuum tube Right circle
+              ctx.beginPath();
+              ctx.arc(this.width * 0.775, this.height * 0.3125, 60, 1.5 * Math.PI, 0.5 * Math.PI);
+              ctx.stroke();
+
+          }
+      };
+
+      var positions = {
+          dy : canvas.height * (.34375 - .28125),
+
+          left_cond_x : canvas.width * .225,
+          left_cond_y1 : canvas.height * .28125,
+          left_cond_y2 : canvas.height * .34375,
+
+          right_cond_x : canvas.width * .775,
+          right_cond_y1 : canvas.height * .28125,
+          right_cond_y2 : canvas.height * .34375,
+
+          light_start : {
+              x : this.left_cond_x + 300,
+              dy_light : this.dy * Math.random(),
+              y : this.left_cond_y1 - 200
+          }
+      };
+      var electrons = {
+          crowd : [],
+          create : function(){
+              this.crowd.push({
+                  pos_x : positions.left_cond_x,
+                  pos_y : positions.left_cond_y1 + Math.random() * positions.dy,
+                  size : 10,
+                  KE : h * freq - phi - volt,
+                  v : Math.sqrt( 2 * (h * freq - phi - volt) / m)
+              })
+          },
+          update : function(){
+
+          },
+          draw : function(input){
+              ctx.beginPath();
+              ctx.fillStyle = "#e2ee5b";
+              ctx.arc(input.x, input.y, input.size, 0, 2 * Math.PI);
+              ctx.fill();
+          }
+      };
+      var light = {
+          lights : [],
+          displacement : positions.dy * .05,
+          create : function(){
+              this.lights.push({
+                 x1 : positions.left_cond_x,
+                 x2 : positions.left_cond_x  + 400,
+                 y1 : positions.left_cond_y1 + positions.dy * .5,
+                 y2 : positions.left_cond_y1 + positions.dy * .5 - 200
+              });
+          },
+          draw : function(input){
+              ctx.beginPath();
+              ctx.strokeStyle = "#fff910";
+              ctx.lineWidth = 3;
+              ctx.moveTo(input.x1,input.y1);
+              ctx.lineTo(input.x2,input.y2);
+              ctx.stroke();
+          }
+      };
+
+      lab.draw_experiment();
+      for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
+
+      while(light.lights.length < 10) light.create();
+      for(var i = 0; i < 5; i++) {
+          delta = i%2 === 0 ? light.displacement : -light.displacement;
+
+          light.lights[i].y1 += i * delta;
+          light.lights[i].y2 += i * delta;
+          light.draw(light.lights[i]);
+      }
+      function apply(){
+          freq = document.getElementById("frequency_repr").value * 1;
+          volt = document.getElementById("voltage_repr").value * 1;
+          intense = document.getElementById("intensity_repr").value * 1;
+          phi = document.getElementById("phi").value * 1;
+          freq_0 = phi / h;
+      }
+      function action(){
+
+          requestId = requestAnimationFrame(action);
+      }
+      document.getElementById("play").addEventListener("click",function(e) {
+          requestId = window.requestAnimationFrame(action);
+      });
+      document.getElementById("pause").addEventListener("click", function(e) {
+          window.cancelAnimationFrame(requestId);
+      });
+    </script>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-padding-32">
+  <p style="font-size:22px;"><b>Contact</b></p>
+  <p style="font-size:18px;">Office tel : 02-6490-2640</p>
+  <p style="font-size:18px;">Location : 228, Science & Technology-building, 163, Seoulsiripdae-ro, Dongdaemun-gu, Seoul, Republic of Korea</p>
+  <p style="font-size:18px;">Copyright by Department of Physics, The University of Seoul - <a href="http://physics.uos.ac.kr/Modules" title="http://physics.uos.ac.kr/Modules" target="_blank" class="w3-hover-text">CPL@UOS</a></p>
+</footer>
+
+</body>
+</html>
