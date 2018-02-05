@@ -147,12 +147,12 @@ Choose the one, You can shoot the electromagnetic waves.</p>
         <br><br>
 
         Frequency<br>
-        <input type="range" name="nature" id="frequency" min="1" max="200" value="10" onchange="frequency_repr(this.value)"> <br>
+        <input type="range" name="nature" id="frequency" min="1" max="200" value="10" onchange="frequency_repr(this.value)" step="0.1"> <br>
         <input type="text" name="nature" id="frequency_repr" value="10" size="2" readonly> (×<img src="http://latex.codecogs.com/gif.latex?10%5E{14}"> Hz)
         <br><br>
 
         Retarding Voltage <br>
-        <input type="range" name="nature" id="voltage" min="1" max="100" value="0" onchange="voltage_repr(this.value)"><br>
+        <input type="range" name="nature" id="voltage" min="0" max="20" value="0" onchange="voltage_repr(this.value)" step="0.1"><br>
         <input type="text" name="nature" id="voltage_repr" value="0" size="2" readonly> (eV)
         <br><br>
 
@@ -478,85 +478,67 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       };
       var electrons = {
           crowd : [],
-          test : [],
           create : function(){
               this.crowd.push({
-                  x : positions.left_cond_x,
+                  x : positions.left_cond_x - 550 * Math.random(),
                   y : positions.left_cond_y1 + Math.random() * positions.dy,
-                  size : 6,
+                  size : 3,
                   KE : h * freq - phi - volt,
+                  color : "white",
                   v_real : Math.sqrt( 2 * (h * freq - phi - volt) / m),
-                  v_par : (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15))
-              })
-          },
-          create_test : function(){
-              this.test.push({
-                  x : positions.left_cond_x,
-                  y : positions.left_cond_y1 + Math.random() * positions.dy,
-                  size : 6,
-                  KE : h * freq - phi - volt,
-                  v : Math.sqrt( 2 * (h * freq - phi - volt) / m),
-                  v_2 : 2 * (h * freq - phi - volt) / m,
                   v_par : (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15))
               })
           },
           update : function(input){
               if(input.x < positions.right_cond_x) input.x += input.v_par;
               if(input.x >= positions.right_cond_x) input.x = positions.left_cond_x;
+              if(input.x > positions.left_cond_x) input.color = "#fffa04";
+          },
+          update_prop : function(input){
+              input.v_par = (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15));
           },
           draw : function(input){
               ctx.beginPath();
-              ctx.fillStyle = "#eee904";
+              ctx.fillStyle = input.color;
               ctx.arc(input.x, input.y, input.size, 0, 2 * Math.PI);
               ctx.fill();
           }
       };
 
-      electrons.create_test();
-
       lab.draw_experiment();
       for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
-
-      while(light.lights.length < 3) light.create();
+      while(light.lights.length < 10) light.create();
       for(var i = 0; i < light.lights.length; i++) {
           delta = i % 2 === 0 ? light.displacement : -light.displacement;
-
           light.lights[i].y1 += i * delta;
           light.lights[i].y2 += i * delta;
-          light.draw(light.lights[i]);
       }
+
       function apply(){
+          reset();
+          window.cancelAnimationFrame(requestId);
           freq = document.getElementById("frequency_repr").value * 1e+14;
           volt = document.getElementById("voltage_repr").value * 1;
           intense = document.getElementById("intensity_repr").value * 1;
           phi = document.getElementById("phi").value * 1;
           freq_0 = phi / h;
       }
+
+      ctx.globalCompositeOperation = "destination-over";
       function action(){
           ctx.clearRect(0,0,canvas.width,canvas.height);
 
           lab.draw_experiment();
           for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
-          for(var i = 0; i < light.lights.length; i++) light.draw(light.lights[i]);
+          for(var i = 0; i < intense; i++) light.draw(light.lights[i]);
 
-          while(electrons.crowd.length <= 100) electrons.create();
+          while(electrons.crowd.length <= 300) electrons.create();
 
-          for(var i = 0; i < electrons.crowd.length; i++){
-
-              if (i === 0){
-                  for(var j = 0; j < 10; j++){
-                      electrons.update(electrons.crowd[i]);
-                      electrons.draw(electrons.crowd[i]);
-                  }
-              }
-              if ( i > 0) {
-                  if(Math.abs(electrons.crowd[i-1].x - electrons.crowd[i].x) > 20) {
-                      for(var j = 0; j < 10; j++) {
-                          electrons.update(electrons.crowd[i]);
-                          electrons.draw(electrons.crowd[i]);
-                      }
-                  }
-
+          for(var i = 0; i < electrons.crowd.length; i++) {
+              if(i % intense !== 0) {
+                  electrons.update_prop(electrons.crowd[i]);
+                  electrons.update(electrons.crowd[i]);
+                  electrons.draw(electrons.crowd[i]);
               }
           }
           requestId = requestAnimationFrame(action);
@@ -567,6 +549,15 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       document.getElementById("pause").addEventListener("click", function(e) {
           window.cancelAnimationFrame(requestId);
       });
+      function reset(){
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+
+          lab.draw_experiment();
+          for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
+
+          window.cancelAnimationFrame(requestId);
+          electrons.crowd = [];
+      }
 
     </script>
   </div>
