@@ -153,7 +153,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
         Retarding Voltage <br>
         <input type="range" name="nature" id="voltage" min="1" max="100" value="0" onchange="voltage_repr(this.value)"><br>
-        <input type="text" name="nature" id="voltage_repr" value="0" size="2" readonly> (V)
+        <input type="text" name="nature" id="voltage_repr" value="0" size="2" readonly> (eV)
         <br><br>
 
         Intensity of Light <br>
@@ -173,13 +173,14 @@ Choose the one, You can shoot the electromagnetic waves.</p>
     <canvas id = "canvas" width="1000" height="800"></canvas>
     <canvas id = "blank" width="1000" height="800"></canvas>
     <script type = "text/javascript">
-      const h = 6.63e-34, c = 2.99e+8, m = 9.10e-31;
+      const h = 4.136e-15, c = 2.99e+8, m = 9.10e-31;
+      // h = [eV*s], c = [m/s], m = [kg]
 
       function frequency_repr(val){ document.getElementById("frequency_repr").value = val;}
       function voltage_repr(val)  { document.getElementById("voltage_repr").value = val;}
       function intensity_repr(val){ document.getElementById("intensity_repr").value = val;}
 
-      var freq = document.getElementById("frequency_repr").value * 1;
+      var freq = document.getElementById("frequency_repr").value * 1e+14;
       var volt = document.getElementById("voltage_repr").value * 1;
       var intense = document.getElementById("intensity_repr").value * 1;
       var phi = document.getElementById("phi").value * 1;
@@ -251,7 +252,9 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           draw_experiment : function(){
 
               // Rect A
-              ctx.beginPath();
+              ctx.beginPath();;
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.225, this.height * 0.3125); //A0
               ctx.lineTo(this.width * 0.10 , this.height * 0.3125); //A1
               ctx.lineTo(this.width * 0.10 , this.height * 0.50 ); //A2
@@ -259,6 +262,8 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               ctx.stroke();
 
               ctx.beginPath();
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.50 + 30 , this.height * 0.50 ); //A3'
               ctx.lineTo(this.width * 0.90 , this.height * 0.50 ); //A3
               ctx.lineTo(this.width * 0.90 , this.height * 0.3125); //A4
@@ -267,6 +272,8 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Rect B
               ctx.beginPath();
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.10 , this.height * 0.50 ); //B0
               ctx.lineTo(this.width * 0.10 , this.height * 0.575); //B1
               ctx.lineTo(this.width * 0.40 , this.height * 0.575); //B2
@@ -275,6 +282,8 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Arrow
               ctx.beginPath();
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * (0.40 - 0.02), this.height * 0.590);
               ctx.lineTo(this.width * 0.4, this.height * 0.600);
               ctx.lineTo(this.width * (0.40 + 0.02), this.height * 0.59);
@@ -282,6 +291,8 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Rect C
               ctx.beginPath();
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.30 , this.height * 0.625); //C0
               ctx.lineTo(this.width * 0.25 , this.height * 0.625); //C1
               ctx.lineTo(this.width * 0.25 , this.height * 0.75 ); //C2
@@ -291,18 +302,23 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Line D
               ctx.beginPath();
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.625, this.height * 0.625); //D0
               ctx.lineTo(this.width * 0.825 - 30, this.height * 0.625); //D0'
               ctx.stroke();
 
               ctx.beginPath();
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.825 + 30, this.height * 0.625); //D1'
               ctx.lineTo(this.width * 0.90 , this.height * 0.625); //D1
               ctx.lineTo(this.width * 0.90 , this.height * 0.50 ); //D2
               ctx.stroke();
 
               // Resistance R
-              ctx.beginPath();
+              ctx.beginPath();;
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 5;
               ctx.moveTo(this.width * 0.30 , this.height * 0.625); //R0
               ctx.lineTo(this.width * (0.30 + (0 + 1/3) * 0.0416), this.height * 0.625); //Ru1
@@ -324,6 +340,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               ctx.stroke();
 
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 1;
               ctx.moveTo(this.width * 0.485 ,this.height * 0.625); //RF1
               ctx.lineTo(this.width * 0.575 ,this.height * 0.625); //RF2
@@ -332,6 +349,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               // Batteries
               // Battery+1
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 1.2;
               ctx.moveTo(this.width * 0.575, this.height * 0.625 - 25);
               ctx.lineTo(this.width * 0.575, this.height * 0.625 + 25);
@@ -339,6 +357,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Battery-1
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 3;
               ctx.moveTo(this.width * (0.575 + 0.0167), this.height * 0.625 - 15);
               ctx.lineTo(this.width * (0.575 + 0.0167), this.height * 0.625 + 15);
@@ -346,6 +365,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Battery+2
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 1.2;
               ctx.moveTo(this.width * (0.575 + 0.0167 * 2), this.height * 0.625 - 25);
               ctx.lineTo(this.width * (0.575 + 0.0167 * 2), this.height * 0.625 + 25);
@@ -353,6 +373,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Battery-2
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 3;
               ctx.moveTo(this.width * 0.625, this.height * 0.625 - 15);
               ctx.lineTo(this.width * 0.625, this.height * 0.625 + 15);
@@ -361,6 +382,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Conductor Left
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 8;
               ctx.moveTo(this.width * 0.225, this.height * 0.28125); //C_L0
               ctx.lineTo(this.width * 0.225, this.height * 0.34375); //C_L1
@@ -368,6 +390,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Conductor Right
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 8;
               ctx.moveTo(this.width * 0.775, this.height * 0.28125); //C_R0
               ctx.lineTo(this.width * 0.775, this.height * 0.34375); //C_R1
@@ -375,6 +398,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Voltmeter
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.lineWidth = 1;
               ctx.arc(this.width * 0.5, this.height * 0.5, 30, 0, 2 * Math.PI);
               ctx.stroke();
@@ -388,23 +412,27 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 
               // Vacuum tube upper line
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.moveTo(this.width * 0.225, this.height * 0.3125 - 60); //C_L0
               ctx.lineTo(this.width * 0.775, this.height * 0.3125 - 60); //C_L1
               ctx.stroke();
 
               // Vaccum tube Left circle
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.arc(this.width * 0.225, this.height * 0.3125, 60, 0.5 * Math.PI, 1.5 * Math.PI);
               ctx.stroke();
 
               // Vacuum tube down line
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.moveTo(this.width * 0.225, this.height * 0.3125 + 60); //C_L0
               ctx.lineTo(this.width * 0.775, this.height * 0.3125 + 60); //C_L1
               ctx.stroke();
 
               // Vacuum tube Right circle
               ctx.beginPath();
+              ctx.strokeStyle = "black";
               ctx.arc(this.width * 0.775, this.height * 0.3125, 60, 1.5 * Math.PI, 0.5 * Math.PI);
               ctx.stroke();
 
@@ -428,36 +456,15 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               y : this.left_cond_y1 - 200
           }
       };
-      var electrons = {
-          crowd : [],
-          create : function(){
-              this.crowd.push({
-                  pos_x : positions.left_cond_x,
-                  pos_y : positions.left_cond_y1 + Math.random() * positions.dy,
-                  size : 10,
-                  KE : h * freq - phi - volt,
-                  v : Math.sqrt( 2 * (h * freq - phi - volt) / m)
-              })
-          },
-          update : function(){
-
-          },
-          draw : function(input){
-              ctx.beginPath();
-              ctx.fillStyle = "#e2ee5b";
-              ctx.arc(input.x, input.y, input.size, 0, 2 * Math.PI);
-              ctx.fill();
-          }
-      };
       var light = {
           lights : [],
           displacement : positions.dy * .05,
           create : function(){
               this.lights.push({
-                 x1 : positions.left_cond_x,
-                 x2 : positions.left_cond_x  + 400,
-                 y1 : positions.left_cond_y1 + positions.dy * .5,
-                 y2 : positions.left_cond_y1 + positions.dy * .5 - 200
+                  x1 : positions.left_cond_x,
+                  x2 : positions.left_cond_x  + 400,
+                  y1 : positions.left_cond_y1 + positions.dy * .5,
+                  y2 : positions.left_cond_y1 + positions.dy * .5 - 200
               });
           },
           draw : function(input){
@@ -469,27 +476,89 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               ctx.stroke();
           }
       };
+      var electrons = {
+          crowd : [],
+          test : [],
+          create : function(){
+              this.crowd.push({
+                  x : positions.left_cond_x,
+                  y : positions.left_cond_y1 + Math.random() * positions.dy,
+                  size : 6,
+                  KE : h * freq - phi - volt,
+                  v_real : Math.sqrt( 2 * (h * freq - phi - volt) / m),
+                  v_par : (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15))
+              })
+          },
+          create_test : function(){
+              this.test.push({
+                  x : positions.left_cond_x,
+                  y : positions.left_cond_y1 + Math.random() * positions.dy,
+                  size : 6,
+                  KE : h * freq - phi - volt,
+                  v : Math.sqrt( 2 * (h * freq - phi - volt) / m),
+                  v_2 : 2 * (h * freq - phi - volt) / m,
+                  v_par : (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15))
+              })
+          },
+          update : function(input){
+              if(input.x < positions.right_cond_x) input.x += input.v_par;
+              if(input.x >= positions.right_cond_x) input.x = positions.left_cond_x;
+          },
+          draw : function(input){
+              ctx.beginPath();
+              ctx.fillStyle = "#eee904";
+              ctx.arc(input.x, input.y, input.size, 0, 2 * Math.PI);
+              ctx.fill();
+          }
+      };
+
+      electrons.create_test();
 
       lab.draw_experiment();
       for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
 
-      while(light.lights.length < 10) light.create();
-      for(var i = 0; i < 5; i++) {
-          delta = i%2 === 0 ? light.displacement : -light.displacement;
+      while(light.lights.length < 3) light.create();
+      for(var i = 0; i < light.lights.length; i++) {
+          delta = i % 2 === 0 ? light.displacement : -light.displacement;
 
           light.lights[i].y1 += i * delta;
           light.lights[i].y2 += i * delta;
           light.draw(light.lights[i]);
       }
       function apply(){
-          freq = document.getElementById("frequency_repr").value * 1;
+          freq = document.getElementById("frequency_repr").value * 1e+14;
           volt = document.getElementById("voltage_repr").value * 1;
           intense = document.getElementById("intensity_repr").value * 1;
           phi = document.getElementById("phi").value * 1;
           freq_0 = phi / h;
       }
       function action(){
+          ctx.clearRect(0,0,canvas.width,canvas.height);
 
+          lab.draw_experiment();
+          for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
+          for(var i = 0; i < light.lights.length; i++) light.draw(light.lights[i]);
+
+          while(electrons.crowd.length <= 100) electrons.create();
+
+          for(var i = 0; i < electrons.crowd.length; i++){
+
+              if (i === 0){
+                  for(var j = 0; j < 10; j++){
+                      electrons.update(electrons.crowd[i]);
+                      electrons.draw(electrons.crowd[i]);
+                  }
+              }
+              if ( i > 0) {
+                  if(Math.abs(electrons.crowd[i-1].x - electrons.crowd[i].x) > 20) {
+                      for(var j = 0; j < 10; j++) {
+                          electrons.update(electrons.crowd[i]);
+                          electrons.draw(electrons.crowd[i]);
+                      }
+                  }
+
+              }
+          }
           requestId = requestAnimationFrame(action);
       }
       document.getElementById("play").addEventListener("click",function(e) {
@@ -498,6 +567,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       document.getElementById("pause").addEventListener("click", function(e) {
           window.cancelAnimationFrame(requestId);
       });
+
     </script>
   </div>
 </div>
