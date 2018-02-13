@@ -49,7 +49,6 @@ h1,h2,h3,h4,h5,h6 {
   <script src="js/OrbitControls.js"></script>
   <script src='js/threex.laserbeam.js'></script>
 -->
-
   <div class="w3-top">
     <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
       <a href="#home" class="w3-bar-item w3-button w3-black w3-round" style="height:100%;width:50%"><b>Photoelectric Effect</b></a>
@@ -171,7 +170,9 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       </p>
     </div>
     <canvas id = "canvas" width="1000" height="800"></canvas>
-    <canvas id = "blank" width="1000" height="800"></canvas>
+    <div id="graph1" style="width:429px; height:430px; left:0px; position:absolute"></div>
+    <div id="graph2" style="width:429px; height:430px; left:429px; position:absolute" ></div>
+    <div id="graph3" style="width:429px; height:430px; left:858px; position:absolute"></div>
     <script type = "text/javascript">
       const h = 4.136e-15, c = 2.99e+8, m = 9.10e-31;
       // h = [eV*s], c = [m/s], m = [kg]
@@ -189,7 +190,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       var canvas = document.getElementById("canvas");
       var ctx = canvas.getContext("2d");
 
-      var requestId;
+      var requestId = false;
 
       //필요한거 아니면 열지마세요
       var lab = {
@@ -525,6 +526,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       }
 
       ctx.globalCompositeOperation = "destination-over";
+
       function action(){
           ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -549,6 +551,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       document.getElementById("pause").addEventListener("click", function(e) {
           window.cancelAnimationFrame(requestId);
       });
+
       function reset(){
           ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -559,17 +562,81 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           electrons.crowd = [];
       }
 
+      var layout1 = {
+          title : 'KE - Frequency',
+          xaxis : {
+              title : 'Frequency(Hz)',
+              showgrid : false,
+              zeroline : false
+          },
+          yaxis : {
+              title : 'Maximum photoelectron Energy, eV',
+              showline : false
+          },
+          showlegend : true
+      };
+
+      function draw(){
+          var  eVHz = {
+              x : [],
+              y : [],
+              mode : 'lines',
+              name : 'eVHz',
+              connectgaps : true
+          };
+          for(var i = 0; i < 100; i++){
+              eVHz.x[i] = i;
+              eVHz.y[i] = i;
+          }
+          var data1 = [eVHz];
+
+          var  eVHz2 = {
+              x : [],
+              y : [],
+              mode : 'lines',
+              name : 'eVHz',
+              connectgaps : true
+          };
+          for(var i = 0; i < 100; i++){
+              eVHz.x[i] = i;
+              eVHz.y[i] = i;
+          }
+          var data2 = [eVHz];
+
+          var  eVHz3 = {
+              x : [],
+              y : [],
+              mode : 'lines',
+              name : 'eVHz',
+              connectgaps : true
+          };
+          for(var i = 0; i < 100; i++){
+              eVHz.x[i] = i;
+              eVHz.y[i] = i;
+          }
+          var data3 = [eVHz];
+
+          Plotly.newPlot('graph1',data1,layout1);
+          Plotly.newPlot('graph2',data2,layout1);
+          Plotly.newPlot('graph3',data3,layout1);
+      }
+      window.onload = function(){
+          draw();
+      }
     </script>
   </div>
 </div>
 
 <!-- Footer -->
+
+  <div id="footer" style="position:absolute; top:3300px; left:100px;">
 <footer class="w3-padding-32">
   <p style="font-size:22px;"><b>Contact</b></p>
   <p style="font-size:18px;">Office tel : 02-6490-2640</p>
   <p style="font-size:18px;">Location : 228, Science & Technology-building, 163, Seoulsiripdae-ro, Dongdaemun-gu, Seoul, Republic of Korea</p>
   <p style="font-size:18px;">Copyright by Department of Physics, The University of Seoul - <a href="http://physics.uos.ac.kr/Modules" title="http://physics.uos.ac.kr/Modules" target="_blank" class="w3-hover-text">CPL@UOS</a></p>
 </footer>
+  </div>
 
 </body>
 </html>
