@@ -90,11 +90,19 @@ h1,h2,h3,h4,h5,h6 {
       <br>
       <h1 class="w3-center w3-orange w3-text-white">Background Theory</h1>
       <hr>
-      <h4>● Mechanisms</h4>
+      <h4>● Mathematical Description</h4>
       <p class="w3-left w3-text-black"></p><br>
 
       <h4>● Limits that Classical Mechanics Encountered</h4>
-      <p class="w3-left w3-text-black"></p><br>
+        <h5>　Ⅰ. Light with frequency lower than the threshold can't emit electrons.</h5>
+        <p class="w3-left w3-text-black">
+        </p><br>
+        <h5> 　Ⅱ. Maximum kinetic energy of electrons only differs from the frequency given.</h5>
+        <p class="w3-left w3-text-black">
+        </p><br>
+        <h5> 　Ⅲ. Even the weak lights with its frequency bigger than the threshold emit electrons.</h5>
+        <p class="w3-left w3-text-black">
+        </p><br>
 
       <h4>● Use and Effects</h4>
       <p class="w3-left w3-text-black"></p><br>
@@ -121,7 +129,11 @@ h1,h2,h3,h4,h5,h6 {
       <p class="w3-large">(2) Choose the frequency watching the threshold frequency above.</p>
       <p class="w3-large">(3) Select Apply and then Play.</p>
       <p class="w3-large">(4) See the differences changing retarding voltages and light intensity.</p>
-      <p class="w3-large"> Try to compare graphs with the default graphs.</p>
+      <p class="w3-large"> Try to compare graphs with the graphs in default settings. </p>
+      <p class="w3-large"> 　You can see the difference in the graphs by - </p>
+      <p class="w3-large"> 　　▶ 1st graph : changing the metal </p>
+      <p class="w3-large"> 　　▶ 2nd graph : changing the intensity </p>
+      <p class="w3-large"> 　　▶ 3rd graph : changing the metal </p>
     </div>
   </div>
 
@@ -149,17 +161,17 @@ h1,h2,h3,h4,h5,h6 {
         <p align="center">
 
         Frequency<br>
-        <input type="range" name="nature" id="frequency" min="1" max="30" value="3" onchange="frequency_repr(this.value)" step="0.1"> <br>
+        <input type="range" name="nature" id="frequency" min="1" max="20" value="3" onchange="frequency_repr(this.value)" step="0.01"> <br>
         <input type="text" name="nature" id="frequency_repr" value="3" size="2" readonly> (×<img src="http://latex.codecogs.com/gif.latex?10%5E{14}"> Hz)
         <br><br>
 
         Retarding Voltage <br>
-        <input type="range" name="nature" id="voltage" min="0" max="20" value="0" onchange="voltage_repr(this.value)" step="0.1"><br>
+        <input type="range" name="nature" id="voltage" min="0" max="5" value="0" onchange="voltage_repr(this.value)" step="0.01"><br>
         <input type="text" name="nature" id="voltage_repr" value="0" size="2" readonly> (eV)
         <br><br>
 
         Intensity of Light <br>
-        <input type="range" name="nature" id="intensity" min="1" max="10" value="3" onchange="intensity_repr(this.value)"><br>
+        <input type="range" name="nature" id="intensity" min="2" max="10" value="3" onchange="intensity_repr(this.value)"><br>
         <input type="text" name="nature" id="intensity_repr" value="3" size="2" readonly> (Relative)
         <br><br>
 
@@ -177,7 +189,7 @@ h1,h2,h3,h4,h5,h6 {
     <div id="graph2" style="width:429px; height:430px; left:429px; position:absolute" ></div>
     <div id="graph3" style="width:429px; height:430px; left:858px; position:absolute"></div>
     <script type = "text/javascript">
-      const h = 4.136e-15, c = 2.99e+8, m = 9.10e-31;
+      const h = 4.136e-15, c = 2.99e+8, m = 9.10e-31, q = 1.16e-19;
       // h = [eV*s], c = [m/s], m = [kg]
 
       function frequency_repr(val){ document.getElementById("frequency_repr").value = val;}
@@ -191,8 +203,6 @@ h1,h2,h3,h4,h5,h6 {
       var freq_0 = phi / h;
       document.getElementById("demo").innerHTML = Math.round(freq_0 * 1e-14 * 100)/100 + "×E+14 Hz";
       document.getElementById("demo").style.textAlign = "center";
-
-
 
       var canvas = document.getElementById("canvas");
       var ctx = canvas.getContext("2d");
@@ -500,7 +510,7 @@ h1,h2,h3,h4,h5,h6 {
           update : function(input){
               if(input.x < positions.right_cond_x) input.x += input.v_par;
               if(input.x >= positions.right_cond_x) input.x = positions.left_cond_x;
-              if(input.x > positions.left_cond_x) input.color = "#fffa04";
+              if(input.x > positions.left_cond_x) input.color = "#f49d39";
           },
           update_prop : function(input){
               input.v_par = (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15)) * 2;
@@ -581,7 +591,6 @@ h1,h2,h3,h4,h5,h6 {
                   electrons.draw(electrons.crowd[i]);
               }
           }
-
           requestId = requestAnimationFrame(action);
       }
       document.getElementById("play").addEventListener("click",function(e) {
@@ -615,9 +624,9 @@ h1,h2,h3,h4,h5,h6 {
           showlegend : true
       };
       var layout2 = {
-          title : 'Current - Potential',
+          title : 'Current - Frequency',
           xaxis : {
-              title : 'Retarding Potential',
+              title : 'Frequency',
               showgrid : false,
               zeroline : false
           },
@@ -630,24 +639,30 @@ h1,h2,h3,h4,h5,h6 {
       var layout3 = {
           title : 'Current - Frequency',
           xaxis : {
-              title : 'Retarding Potential',
+              title : 'Retarding Voltage',
               showgrid : false,
               zeroline : false
           },
           yaxis : {
-              title : 'Frequency',
+              title : 'Photoelectron Current',
               showline : false
           },
           showlegend : true
       };
 
-
+      var color_graph = {
+          default_color : "#16c2f4",
+          user_color : "#7d36f4"
+      };
       function draw(){
-          var  eVHz = {
+          var eVHz = {
               x : [],
               y : [],
               mode : 'lines',
               name : 'Cs',
+              line : {
+                  color : color_graph.default_color
+              },
               connectgaps : true
           };
           for(var i = 0; i < 20; i++){
@@ -659,7 +674,9 @@ h1,h2,h3,h4,h5,h6 {
               y : [],
               mode : 'lines',
               name : metal,
-              line : {color : "rgb(100,100,100)"},
+              line : {
+                  color : color_graph.user_color
+              },
               connectgaps : true
           };
           for(var i = 0; i < 20; i++){
@@ -668,18 +685,70 @@ h1,h2,h3,h4,h5,h6 {
           }
           var data1 = [eVHz, eVHz2];
 
-
-          var data2 = [eVHz];
-
-          var  eVHz3 = {
+          var IF = {
               x : [],
               y : [],
               mode : 'lines',
-              name : 'eVHz',
+              name : 'Cs',
+              line : {
+                  color : color_graph.default_color
+              },
               connectgaps : true
           };
+          for(var i = 0; i < 20; i++){
+              IF.x[i] = i;
+              if(i < 1.9) IF.y[i] = 0;
+              if(i > 1.9) IF.y[i] = 3 * 1.023;
+          }
+          var IF2 = {
+              x : [],
+              y : [],
+              mode : 'lines',
+              name : metal,
+              line : {
+                  color : color_graph.user_color
+              },
+              connectgaps : true
+          };
+          for(var i = 0; i < 40; i++){
+              IF2.x[i] = i/2;
+              if(i < phi) IF2.y[i] = 0;
+              if(i > phi) IF2.y[i] = intense * 1.023;
+          }
+          var data2 = [IF, IF2];
 
-          var data3 = [eVHz];
+          var V0_def = 1e-18 * (h * freq - 1.9)/q;
+          var V0 = 1e-18 * (h * freq - phi)/q;
+          var  IVs = {
+              x : [],
+              y : [],
+              mode : 'lines',
+              name : 'default :' + 3,
+              line : {
+                  color : color_graph.default_color
+              },
+              connectgaps : true
+          };
+          for(var i = 0; i < 150; i++){
+              IVs.x[i] = i - V0_def - 30;
+              IVs.y[i] = 3 * fermi(i - V0_def - 20, - V0_def / 2 );
+          }
+          var  IVs2 = {
+              x : [],
+              y : [],
+              mode : 'lines',
+              name : intense,
+              line : {
+                  color : color_graph.user_color
+              },
+              connectgaps : true
+          };
+          for(var i = 0; i < 150; i++){
+              IVs2.x[i] = i - V0 - 20;
+              IVs2.y[i] = intense * fermi(i - V0 - 30, - V0 / 2 );
+          }
+
+          var data3 = [IVs, IVs2];
 
           Plotly.newPlot('graph1', data1, layout1);
           Plotly.newPlot('graph2', data2, layout2);
@@ -687,7 +756,12 @@ h1,h2,h3,h4,h5,h6 {
       }
       window.onload = function(){
           draw();
+      };
+
+      function fermi(x,a) {
+          return 1/(Math.exp((-x+a)/5)+1);
       }
+
     </script>
   </div>
 </div>

@@ -5,6 +5,46 @@
     <title>BlankPage</title>
 </head>
 <body>
+<div id="graph"></div>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
 
+    var layout = {
+        title : 'Current - Frequency',
+        xaxis : {
+            title : 'Frequency',
+            showgrid : false,
+            zeroline : false
+        },
+        yaxis : {
+            title : 'Photoelectron Current',
+            showline : false
+        },
+        showlegend : true
+    };
+
+    function draw(){
+        var  IVs = {
+            x : [],
+            y : [],
+            mode : 'lines',
+            name : 'eVHz',
+            connectgaps : true
+        };
+        for(var i = 0; i < 40; i++){
+            IVs.x[i] = i - 20;
+            IVs.y[i] = fermi(i - 20,0);
+        }
+        var data = [IVs];
+
+        Plotly.newPlot('graph', data, layout);
+    }
+    window.onload = function(){
+        draw();
+    };
+    function fermi(x,a) {
+        return 1/(Math.exp(-x+a)+1);
+    }
+</script>
 </body>
 </html>
