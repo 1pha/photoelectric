@@ -77,27 +77,27 @@ h1,h2,h3,h4,h5,h6 {
       <p></p>
       <p></p>
       <hr>
-      <p class="w3-large"> Paragraph</p>
-      <p class="w3-large w3-text-grey w3-hide-medium">The radio wave is reflected back to the Earth's surface when the wavelength is long,
-      penetrating the middle of the Appleton layer with the greatest degree of ionization,
-      and propagating out of space through the heavy side layer if the radio wave energy is sufficient.</p>
+      <p class="w3-large"> Photoelectric Effect</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">
+
+      </p>
     </div>
   </div>
 
   <!-- Background Theory Section -->
   <div class="w3-container w3-padding-small" id="bgtheory">
-    <div class="centered">
+    <div align = 'left'>
       <br>
       <h1 class="w3-center w3-orange w3-text-white">Background Theory</h1>
       <hr>
-      <h4>● The Photoionization</h4>
-      <p class="w3-center w3-text-black">Interference means that two or more wavelengths are physically added to represent a new wave form. The most widely used view of interference is about the interactions of mutually extinguished or mutually reinforcing wavelengths because their wavelengths come from the same light source,</p><br>
+      <h4>● Mechanisms</h4>
+      <p class="w3-left w3-text-black"></p><br>
 
-      <h4>● The wireless communication</h4>
-      <p class="w3-center w3-text-black">are near perfect, or have the same frequency. If the two wavelengths have wavelength regions that are not exactly the same, and there are the same number of phase differences at each wavelength produced, then the two non-single wavelengths are also perfectly complementary to each other.</p><br>
+      <h4>● Limits that Classical Mechanics Encountered</h4>
+      <p class="w3-left w3-text-black"></p><br>
 
-      <h4>● The Ionosphere</h4>
-      <p class="w3-text-black">If the waves originate from two or more different sources, the difference in total phase is caused by the difference between the two waveforms and the sum of the initial phase differences. This conclusion can be seen in terms of whether the wavelength is in phase or out phase exactly at the starting point of the wavelength.</p><br>
+      <h4>● Use and Effects</h4>
+      <p class="w3-left w3-text-black"></p><br>
     </div>
   </div>
 
@@ -112,16 +112,16 @@ h1,h2,h3,h4,h5,h6 {
     <div class="w3-col m6 w3-padding-small">
       <br><br>
       <h1 class="w3-center w3-blue">How to use</h1>
-      <h5 class="w3-center">Discovery of the appleton layer</h5>
+      <h5 class="w3-center">Photoelectric Effect</h5>
       <p></p>
       <p></p>
       <hr>
-      <p class="w3-large">Frequency : none / LF(Low) / HF(High Frequency) / VHF(Very High Frequency)
-Choose the one, You can shoot the electromagnetic waves.</p>
-      <p class="w3-large">(1)Click the Frequency and choose the one of frequency.(I made they for you) </p>
-      <p class="w3-large">(2)Satellite : It's the satellite communication. </p>
-      <p class="w3-large">(3)Check to this box, You can see where is the Appleton layer.</p>
-      <p class="w3-large">(4)Guess where is the appleton layer. You can do it. </p>
+      <p class="w3-large"></p>
+      <p class="w3-large">(1) Select the type of the metal.</p>
+      <p class="w3-large">(2) Choose the frequency watching the threshold frequency above.</p>
+      <p class="w3-large">(3) Select Apply and then Play.</p>
+      <p class="w3-large">(4) See the differences changing retarding voltages and light intensity.</p>
+      <p class="w3-large"> Try to compare graphs with the default graphs.</p>
     </div>
   </div>
 
@@ -143,11 +143,14 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           <option value="4.7">Cu,Ag 4.7eV</option>
           <option value="6.4">Pt 6.4eV</option>
         </select>
-        <br><br>
+          <br><Br>
+        Threshold Frequency : <p id="demo"></p>
+      </p>
+        <p align="center">
 
         Frequency<br>
-        <input type="range" name="nature" id="frequency" min="1" max="200" value="10" onchange="frequency_repr(this.value)" step="0.1"> <br>
-        <input type="text" name="nature" id="frequency_repr" value="10" size="2" readonly> (×<img src="http://latex.codecogs.com/gif.latex?10%5E{14}"> Hz)
+        <input type="range" name="nature" id="frequency" min="1" max="30" value="3" onchange="frequency_repr(this.value)" step="0.1"> <br>
+        <input type="text" name="nature" id="frequency_repr" value="3" size="2" readonly> (×<img src="http://latex.codecogs.com/gif.latex?10%5E{14}"> Hz)
         <br><br>
 
         Retarding Voltage <br>
@@ -170,7 +173,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       </p>
     </div>
     <canvas id = "canvas" width="1000" height="800"></canvas>
-    <div id="graph1" style="width:429px; height:430px; left:0px; position:absolute"></div>
+    <div id="graph1" style="width:429px; height:430px; position:absolute"></div>
     <div id="graph2" style="width:429px; height:430px; left:429px; position:absolute" ></div>
     <div id="graph3" style="width:429px; height:430px; left:858px; position:absolute"></div>
     <script type = "text/javascript">
@@ -186,6 +189,10 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       var intense = document.getElementById("intensity_repr").value * 1;
       var phi = document.getElementById("phi").value * 1;
       var freq_0 = phi / h;
+      document.getElementById("demo").innerHTML = Math.round(freq_0 * 1e-14 * 100)/100 + "×E+14 Hz";
+      document.getElementById("demo").style.textAlign = "center";
+
+
 
       var canvas = document.getElementById("canvas");
       var ctx = canvas.getContext("2d");
@@ -496,7 +503,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               if(input.x > positions.left_cond_x) input.color = "#fffa04";
           },
           update_prop : function(input){
-              input.v_par = (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15));
+              input.v_par = (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15)) * 2;
           },
           draw : function(input){
               ctx.beginPath();
@@ -515,6 +522,34 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           light.lights[i].y2 += i * delta;
       }
 
+      function set_metal(){
+          switch(phi){
+              case 1.9:
+                  metal = "Cs";
+                  break;
+              case 2.2:
+                  metal = "K";
+                  break;
+              case 2.3:
+                  metal = "Na";
+                  break;
+              case 2.5:
+                  metal = "Li";
+                  break;
+              case 3.2:
+                  metal = "Ca";
+                  break;
+              case 4.7:
+                  metal = "Cu,Ag";
+                  break;
+              case 6.4:
+                  metal = "Pt";
+                  break;
+              default :
+                  metal = "Cs";
+          }
+      }
+      set_metal();
       function apply(){
           reset();
           window.cancelAnimationFrame(requestId);
@@ -523,10 +558,13 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           intense = document.getElementById("intensity_repr").value * 1;
           phi = document.getElementById("phi").value * 1;
           freq_0 = phi / h;
+          document.getElementById("demo").innerHTML = Math.round(freq_0 * 1e-14 * 100)/100 + "×E+14 Hz";
+
+          set_metal();
+          draw();
       }
 
       ctx.globalCompositeOperation = "destination-over";
-
       function action(){
           ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -534,15 +572,16 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           for(var i = 0; i < lab.text.length; i++) lab.draw_text(lab.text[i]);
           for(var i = 0; i < intense; i++) light.draw(light.lights[i]);
 
-          while(electrons.crowd.length <= 300) electrons.create();
+          while(electrons.crowd.length <= 500) electrons.create();
 
           for(var i = 0; i < electrons.crowd.length; i++) {
-              if(i % intense !== 0) {
+              if (i % intense !== 0) {
                   electrons.update_prop(electrons.crowd[i]);
                   electrons.update(electrons.crowd[i]);
                   electrons.draw(electrons.crowd[i]);
               }
           }
+
           requestId = requestAnimationFrame(action);
       }
       document.getElementById("play").addEventListener("click",function(e) {
@@ -565,7 +604,7 @@ Choose the one, You can shoot the electromagnetic waves.</p>
       var layout1 = {
           title : 'KE - Frequency',
           xaxis : {
-              title : 'Frequency(Hz)',
+              title : 'Frequency(×E+14 Hz)',
               showgrid : false,
               zeroline : false
           },
@@ -575,32 +614,61 @@ Choose the one, You can shoot the electromagnetic waves.</p>
           },
           showlegend : true
       };
+      var layout2 = {
+          title : 'Current - Potential',
+          xaxis : {
+              title : 'Retarding Potential',
+              showgrid : false,
+              zeroline : false
+          },
+          yaxis : {
+              title : 'Photoelectron current',
+              showline : false
+          },
+          showlegend : true
+      };
+      var layout3 = {
+          title : 'Current - Frequency',
+          xaxis : {
+              title : 'Retarding Potential',
+              showgrid : false,
+              zeroline : false
+          },
+          yaxis : {
+              title : 'Frequency',
+              showline : false
+          },
+          showlegend : true
+      };
+
 
       function draw(){
           var  eVHz = {
               x : [],
               y : [],
               mode : 'lines',
-              name : 'eVHz',
+              name : 'Cs',
               connectgaps : true
           };
-          for(var i = 0; i < 100; i++){
+          for(var i = 0; i < 20; i++){
               eVHz.x[i] = i;
-              eVHz.y[i] = i;
+              eVHz.y[i] = h * i * 1e+14 - 1.9;
           }
-          var data1 = [eVHz];
-
-          var  eVHz2 = {
+          var eVHz2 = {
               x : [],
               y : [],
               mode : 'lines',
-              name : 'eVHz',
+              name : metal,
+              line : {color : "rgb(100,100,100)"},
               connectgaps : true
           };
-          for(var i = 0; i < 100; i++){
-              eVHz.x[i] = i;
-              eVHz.y[i] = i;
+          for(var i = 0; i < 20; i++){
+              eVHz2.x[i] = i;
+              eVHz2.y[i] = h * i * 1e+14 - phi;
           }
+          var data1 = [eVHz, eVHz2];
+
+
           var data2 = [eVHz];
 
           var  eVHz3 = {
@@ -610,15 +678,12 @@ Choose the one, You can shoot the electromagnetic waves.</p>
               name : 'eVHz',
               connectgaps : true
           };
-          for(var i = 0; i < 100; i++){
-              eVHz.x[i] = i;
-              eVHz.y[i] = i;
-          }
+
           var data3 = [eVHz];
 
-          Plotly.newPlot('graph1',data1,layout1);
-          Plotly.newPlot('graph2',data2,layout1);
-          Plotly.newPlot('graph3',data3,layout1);
+          Plotly.newPlot('graph1', data1, layout1);
+          Plotly.newPlot('graph2', data2, layout2);
+          Plotly.newPlot('graph3', data3, layout3);
       }
       window.onload = function(){
           draw();
@@ -628,7 +693,6 @@ Choose the one, You can shoot the electromagnetic waves.</p>
 </div>
 
 <!-- Footer -->
-
   <div id="footer" style="position:absolute; top:3300px; left:100px;">
 <footer class="w3-padding-32">
   <p style="font-size:22px;"><b>Contact</b></p>
