@@ -26,7 +26,7 @@ header, footer{
 }
 h1,h2,h3,h4,h5,h6 {
     font-family: "apple sd gothic neo", sans-serif;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
 }
 #gui_container{
               position: relative;
@@ -36,7 +36,6 @@ h1,h2,h3,h4,h5,h6 {
 #gui{
   transform:translate(-50%, -0px);
 }
-
 </style>
 <body>
   <!-- javascript 라이브러리 넣는 부분
@@ -90,10 +89,10 @@ h1,h2,h3,h4,h5,h6 {
       <br>
       <h1 class="w3-center w3-orange w3-text-white">Background Theory</h1>
       <hr>
-      <h4>● Mathematical Description</h4>
+      <h3>● Mathematical Description</h3>
       <p class="w3-left w3-text-black"></p><br>
 
-      <h4>● Limits that Classical Mechanics Encountered</h4>
+      <h3>● Limits that Classical Mechanics Encountered</h3>
         <h5>　Ⅰ. Light with frequency lower than the threshold can't emit electrons.</h5>
         <p class="w3-left w3-text-black">
         </p><br>
@@ -104,7 +103,7 @@ h1,h2,h3,h4,h5,h6 {
         <p class="w3-left w3-text-black">
         </p><br>
 
-      <h4>● Use and Effects</h4>
+      <h3>● Use and Effects</h3>
       <p class="w3-left w3-text-black"></p><br>
     </div>
   </div>
@@ -143,8 +142,9 @@ h1,h2,h3,h4,h5,h6 {
     <div class="centered"><br><br>
       <h1 class="w3-center w3-green">Module</h1>
     </div>
-    <div id="menu" style="width:300px; height:800px; background-color:#EEEEEE; position:absolute; border : 1px solid #000000; left:1010px;">
+    <div id="menu" style="width:300px; height:700px; background-color:#EEEEEE; position:absolute; border : 1px solid #000000; left:1010px;">
       <p align = "center">
+        <br><br><br>
         Type of Metal(work function in eV)<br>
         <select id="phi" >
           <option value="1.9">Cs 1.9eV</option>
@@ -184,7 +184,7 @@ h1,h2,h3,h4,h5,h6 {
         <br><br><br>
       </p>
     </div>
-    <canvas id = "canvas" width="1000" height="800"></canvas>
+    <canvas id = "canvas" width="1000" height="700"></canvas>
     <div id="graph1" style="width:429px; height:430px; position:absolute"></div>
     <div id="graph2" style="width:429px; height:430px; left:429px; position:absolute" ></div>
     <div id="graph3" style="width:429px; height:430px; left:858px; position:absolute"></div>
@@ -230,7 +230,7 @@ h1,h2,h3,h4,h5,h6 {
               },
               Eqt = {
                   text : "Evacuated quartz tube",
-                  size : "30px Arial",
+                  size : "20px Arial",
                   x : canvas.width * 0.5,
                   y : canvas.height * 0.43
               },
@@ -510,7 +510,7 @@ h1,h2,h3,h4,h5,h6 {
           update : function(input){
               if(input.x < positions.right_cond_x) input.x += input.v_par;
               if(input.x >= positions.right_cond_x) input.x = positions.left_cond_x;
-              if(input.x > positions.left_cond_x) input.color = "#f49d39";
+              if(input.x > positions.left_cond_x) input.color = "#f45f82";
           },
           update_prop : function(input){
               input.v_par = (Math.sqrt( 2 * (h * freq - phi - volt) / m) / (1e+15)) * 2;
@@ -659,7 +659,7 @@ h1,h2,h3,h4,h5,h6 {
               x : [],
               y : [],
               mode : 'lines',
-              name : 'Cs',
+              name : 'Cs - default',
               line : {
                   color : color_graph.default_color
               },
@@ -673,7 +673,7 @@ h1,h2,h3,h4,h5,h6 {
               x : [],
               y : [],
               mode : 'lines',
-              name : metal,
+              name : metal + " - user",
               line : {
                   color : color_graph.user_color
               },
@@ -689,14 +689,14 @@ h1,h2,h3,h4,h5,h6 {
               x : [],
               y : [],
               mode : 'lines',
-              name : 'Cs',
+              name : 'Cs - default',
               line : {
                   color : color_graph.default_color
               },
               connectgaps : true
           };
-          for(var i = 0; i < 20; i++){
-              IF.x[i] = i;
+          for(var i = 0; i < 40; i++){
+              IF.x[i] = i/2;
               if(i < 1.9) IF.y[i] = 0;
               if(i > 1.9) IF.y[i] = 3 * 1.023;
           }
@@ -704,7 +704,7 @@ h1,h2,h3,h4,h5,h6 {
               x : [],
               y : [],
               mode : 'lines',
-              name : metal,
+              name : metal + " - user",
               line : {
                   color : color_graph.user_color
               },
@@ -723,7 +723,7 @@ h1,h2,h3,h4,h5,h6 {
               x : [],
               y : [],
               mode : 'lines',
-              name : 'default :' + 3,
+              name : 'default : ' + 3,
               line : {
                   color : color_graph.default_color
               },
@@ -737,7 +737,7 @@ h1,h2,h3,h4,h5,h6 {
               x : [],
               y : [],
               mode : 'lines',
-              name : intense,
+              name : "user : " + intense,
               line : {
                   color : color_graph.user_color
               },
