@@ -67,16 +67,16 @@ h1,h2,h3,h4,h5,h6 {
   <div class="w3-row w3-padding-64" id="about">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
       <br><br>
-     <img src="img/appleton.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="540" height="400">
+     <img src="img/intro.jpg" style="left:30px" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="440" height="400" >
     </div>
 
     <div class="w3-col m6 w3-padding-small">
       <br>
       <h1 class="w3-center w3-red">Introduction</h1>
-      <p></p>
-      <p></p>
+      <p> A photoelectric effect is a phenomenon in which electrons are emitted when light of a certain frequency or more is applied to a metal surface, This because the energy of the photons is transmitted to the electrons. Einstein was awarded the Nobel Prize for this experiment that confirmed the particleity of light.</p>
+      <p> In a vacuum tube like a picture made of a metal plate, if the light of appropriate intensity is applied to the positive electrode, the photoelectrons protrude to the negative electrode. At this time, when a voltage of a certain magnitude is applied, the photoelectron does not protrude even if the intensity of the light is enlarged. This is called a maximum stop voltage, which corresponds to the maximum photoelectron kinetic energy.</p>
       <hr>
-      <p class="w3-large"> Photoelectric Effect</p>
+      <p class="w3-large"> </p>
       <p class="w3-large w3-text-grey w3-hide-medium">
 
       </p>
@@ -90,20 +90,71 @@ h1,h2,h3,h4,h5,h6 {
       <h1 class="w3-center w3-orange w3-text-white">Background Theory</h1>
       <hr>
       <h3>● Mathematical Description</h3>
-      <p class="w3-left w3-text-black"></p><br>
+      <p class="w3-left w3-text-black">
+        According to the Planck equation, the energy
+        <img src="http://latex.codecogs.com/gif.latex?E">
+        of a photon incident at a constant frequency
+        <img src="http://latex.codecogs.com/gif.latex?\nu" title="\nu" />
+        is
+        <img src="http://latex.codecogs.com/gif.latex?E&space;=&space;h\nu" title="E = h\nu" />
+        . (Where
+        <img src="http://latex.codecogs.com/gif.latex?h" title="h" />
+        is Planck 's constant). And work function of the metal
+        <img src="http://latex.codecogs.com/gif.latex?\phi&space;=&space;h\nu_0" title="\phi = h\nu_0" />
+        where
+        <img src="http://latex.codecogs.com/gif.latex?\phi" title="\phi" />
+        is the minimum energy for electrons to leave the metal surface. Also, if the maximum kinetic energy of the emitted electrons is
+        <img src="http://latex.codecogs.com/gif.latex?KE_{max}" title="KE_{max}" />
+        then the following relation holds between them.
+
+        <br><br>
+        <img src="http://latex.codecogs.com/gif.latex?E&space;=&space;\phi&space;&plus;&space;KE_{max}" title="E = \phi + KE_{max}" /><br>
+        <img src="http://latex.codecogs.com/gif.latex?h\nu&space;=&space;h\nu_0&space;&plus;&space;KE_{max}" title="h\nu = h\nu_0 + KE_{max}" /><br>
+        <img src="http://latex.codecogs.com/gif.latex?KE_{max}&space;=&space;h\nu&space;-&space;h\nu_0&space;=&space;h(\nu-\nu_0)" title="KE_{max} = h\nu - h\nu_0 = h(\nu-\nu_0)" /><br>
+
+        <br>
+        Therefore, for electrons to move, light with energy above the work function of the metal should be applied, and the minimum frequency of light at that time is called the threshold frequency.
+        <br><br>
+        If any retarding voltage is applied, the equation is changed as follows.
+        <br><br>
+        <img src="http://latex.codecogs.com/gif.latex?E&space;=&space;\phi&space;&plus;&space;KE_{max}&space;&plus;&space;V_{retard}" title="E = \phi + KE_{max} + V_{retard}" /><br>
+        <img src="http://latex.codecogs.com/gif.latex?KE_{max}&space;=&space;E&space;-&space;\phi&space;-&space;V_{retard}" title="KE_{max} = E - \phi - V_{retard}" /><br>
+        <br>
+        At this time, the voltage at which the movement of the electrons stops is called the maximum retarding voltage.
+
+
+      </p><br>
 
       <h3>● Limits that Classical Mechanics Encountered</h3>
+        Some of the following results from the photoelectric effect experiments were not explained at all from the classical view of light as wave.
         <h5>　Ⅰ. Light with frequency lower than the threshold can't emit electrons.</h5>
         <p class="w3-left w3-text-black">
-        </p><br>
+        </p>
         <h5> 　Ⅱ. Maximum kinetic energy of electrons only differs from the frequency given.</h5>
         <p class="w3-left w3-text-black">
-        </p><br>
+        </p>
         <h5> 　Ⅲ. Even the weak lights with its frequency bigger than the threshold emit electrons.</h5>
         <p class="w3-left w3-text-black">
+            All three results suggest the opposite interpretation of classical predictions that only the intensity of light, regardless of the type of light (frequency), will affect the kinetic energy of the electron. That is, the energy of the electron depends only on the frequency of light, not on the intensity of light, and the intensity of light affects only the amount of emitted electrons.
+            <br><br>
+            These results are interpreted from the view of quantum theory, as shown in
+          <img src="http://latex.codecogs.com/gif.latex?KE_{max}&space;=&space;h\nu&space;-&space;h\nu_0" title="KE_{max} = h\nu - h\nu_0" />
+            According to the equation, the kinetic energy of the electron only depends on the frequency of the light.
         </p><br>
 
       <h3>● Use and Effects</h3>
+        - Photomultipliers <br>
+         These are extremely light-sensitive vacuum tubes with a photocathode coated onto part (an end or side) of the inside of the envelope. The photocathode contains combinations of materials such as cesium, rubidium, and antimony specially selected to provide a low work function, so when illuminated even by very low levels of light, the photocathode readily releases electrons. By means of a series of electrodes (dynodes) at ever-higher potentials, these electrons are accelerated and substantially increased in number through secondary emission to provide a readily detectable output current. Photomultipliers are still commonly used wherever low levels of light must be detected.
+        <br><br>
+
+        - Image sensors <br>
+         Video camera tubes in the early days of television used the photoelectric effect, for example, Philo Farnsworth's "Image dissector" used a screen charged by the photoelectric effect to transform an optical image into a scanned electronic signal.
+        <br><br>
+
+        - Photoelectron spectroscopy <br>
+         Since the energy of the photoelectrons emitted is exactly the energy of the incident photon minus the material's work function or binding energy, the work function of a sample can be determined by bombarding it with a monochromatic X-ray source or UV source, and measuring the kinetic energy distribution of the electrons emitted.<br>
+         Photoelectron spectroscopy is usually done in a high-vacuum environment, since the electrons would be scattered by gas molecules if they were present. However, some companies are now selling products that allow photoemission in air. The light source can be a laser, a discharge tube, or a synchrotron radiation source.
+
       <p class="w3-left w3-text-black"></p><br>
     </div>
   </div>
@@ -112,7 +163,7 @@ h1,h2,h3,h4,h5,h6 {
   <div class="w3-row w3-padding-small" id="how">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
       <br>
-     <img src="img/sample3.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="540" height="400">
+     <img src="img/usage.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="340" height="400">
     </div>
 
     <br>
@@ -731,7 +782,7 @@ h1,h2,h3,h4,h5,h6 {
           };
           for(var i = 0; i < 150; i++){
               IVs.x[i] = i - V0_def - 30;
-              IVs.y[i] = 3 * fermi(i - V0_def - 20, - V0_def / 2 );
+              IVs.y[i] = 3 * fermi(i - V0_def - 30, - V0_def / 2 );
           }
           var  IVs2 = {
               x : [],
@@ -744,7 +795,7 @@ h1,h2,h3,h4,h5,h6 {
               connectgaps : true
           };
           for(var i = 0; i < 150; i++){
-              IVs2.x[i] = i - V0 - 20;
+              IVs2.x[i] = i - V0 - 30;
               IVs2.y[i] = intense * fermi(i - V0 - 30, - V0 / 2 );
           }
 
@@ -767,7 +818,7 @@ h1,h2,h3,h4,h5,h6 {
 </div>
 
 <!-- Footer -->
-  <div id="footer" style="position:absolute; top:3300px; left:100px;">
+  <div id="footer" style="position:absolute; top:3900px; left:100px;">
 <footer class="w3-padding-32">
   <p style="font-size:22px;"><b>Contact</b></p>
   <p style="font-size:18px;">Office tel : 02-6490-2640</p>
